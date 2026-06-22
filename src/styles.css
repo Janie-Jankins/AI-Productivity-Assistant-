@@ -42,8 +42,11 @@
 
   --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-glow));
   --gradient-subtle: linear-gradient(180deg, var(--background), var(--muted));
-  --shadow-elegant: 0 10px 30px -10px color-mix(in oklab, var(--primary) 25%, transparent);
-  --shadow-card: 0 1px 2px 0 rgb(0 0 0 / 0.04), 0 1px 3px 0 rgb(0 0 0 / 0.06);
+  --gradient-mesh: radial-gradient(at 18% 0%, color-mix(in oklab, var(--primary) 22%, transparent) 0px, transparent 50%), radial-gradient(at 82% 8%, color-mix(in oklab, var(--primary-glow) 28%, transparent) 0px, transparent 50%), radial-gradient(at 50% 100%, color-mix(in oklab, var(--primary) 14%, transparent) 0px, transparent 60%);
+  --shadow-elegant: 0 10px 30px -10px color-mix(in oklab, var(--primary) 30%, transparent);
+  --shadow-glow: 0 0 50px -10px color-mix(in oklab, var(--primary-glow) 45%, transparent);
+  --shadow-card: 0 1px 2px 0 rgb(0 0 0 / 0.04), 0 4px 16px -4px rgb(0 0 0 / 0.06);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 :root {
@@ -157,3 +160,49 @@
     color: var(--color-muted-foreground);
   }
 }
+
+@layer utilities {
+  .bg-mesh { background-image: var(--gradient-mesh); }
+  .bg-gradient-primary { background-image: var(--gradient-primary); }
+  .text-gradient {
+    background-image: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .glass {
+    background: color-mix(in oklab, var(--card) 70%, transparent);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+  }
+  .ring-grad {
+    position: relative;
+  }
+  .ring-grad::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, color-mix(in oklab, var(--primary) 45%, transparent), transparent 60%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) }
+  50% { transform: translateY(-6px) }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0 }
+  100% { background-position: 200% 0 }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px) }
+  to   { opacity: 1; transform: translateY(0) }
+}
+.animate-float { animation: float-slow 6s ease-in-out infinite; }
+.animate-fade-up { animation: fade-up 0.5s ease-out both; }
