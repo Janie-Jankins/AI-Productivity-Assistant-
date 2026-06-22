@@ -121,13 +121,14 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <SidebarProvider>
-        <div className="flex min-h-screen w-full">
+        <div className="flex min-h-screen w-full bg-mesh">
           <AppSidebar />
           <div className="flex min-w-0 flex-1 flex-col">
-            <header className="sticky top-0 z-10 flex h-14 items-center gap-2 border-b bg-background/80 px-3 backdrop-blur md:px-5">
+            <header className="sticky top-0 z-10 flex h-14 items-center gap-2 border-b glass px-3 md:px-5">
               <SidebarTrigger />
-              <div className="text-sm font-medium text-muted-foreground">
-                Workplace AI
+              <div className="flex items-center gap-2 text-sm font-medium">
+                <span className="hidden sm:inline-block h-1.5 w-1.5 rounded-full bg-[image:var(--gradient-primary)] shadow-[var(--shadow-glow)]" />
+                <span className="text-gradient font-semibold tracking-tight">Workplace AI</span>
               </div>
             </header>
             <main className="flex-1 px-4 py-6 md:px-8 md:py-8">
