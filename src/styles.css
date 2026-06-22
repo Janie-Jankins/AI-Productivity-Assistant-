@@ -42,8 +42,11 @@
 
   --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-glow));
   --gradient-subtle: linear-gradient(180deg, var(--background), var(--muted));
-  --shadow-elegant: 0 10px 30px -10px color-mix(in oklab, var(--primary) 25%, transparent);
-  --shadow-card: 0 1px 2px 0 rgb(0 0 0 / 0.04), 0 1px 3px 0 rgb(0 0 0 / 0.06);
+  --gradient-mesh: radial-gradient(at 18% 0%, color-mix(in oklab, var(--primary) 22%, transparent) 0px, transparent 50%), radial-gradient(at 82% 8%, color-mix(in oklab, var(--primary-glow) 28%, transparent) 0px, transparent 50%), radial-gradient(at 50% 100%, color-mix(in oklab, var(--primary) 14%, transparent) 0px, transparent 60%);
+  --shadow-elegant: 0 10px 30px -10px color-mix(in oklab, var(--primary) 30%, transparent);
+  --shadow-glow: 0 0 50px -10px color-mix(in oklab, var(--primary-glow) 45%, transparent);
+  --shadow-card: 0 1px 2px 0 rgb(0 0 0 / 0.04), 0 4px 16px -4px rgb(0 0 0 / 0.06);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 :root {
